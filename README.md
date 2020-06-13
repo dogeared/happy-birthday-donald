@@ -24,6 +24,7 @@ run `npm install` to install the required node.js libraries.
 
 Execute the following:
 
+```
 API_KEY=<api key> \
 API_SECRET_KEY=<api secret key> \
 ACCESS_TOKEN=<access token> \
@@ -32,3 +33,4 @@ MESSAGE='Happy Birthday!' \
 TO_HANDLE=@realdonaldtrump \
 INTERVAL=<interval between tweets in milliseconds. 300000 is 5 minutes> \
 node hbd.js
+```
