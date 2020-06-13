@@ -52,6 +52,7 @@ const hbd = () => {
                 if (error) throw error;
                 // console.log(tweet);  // Tweet body.
                 // console.log(response);  // Raw response object.
+                console.log();
             });
         });
     })
@@ -59,6 +60,7 @@ const hbd = () => {
 
 console.log('Kicking off Happy Birthday Donald.');
 console.log('About to send tweet. Next will be in ' + interval + ' milliseconds.');
+console.log();
 hbd();
 
 setInterval(hbd, interval);
