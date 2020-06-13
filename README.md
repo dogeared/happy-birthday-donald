@@ -1,9 +1,11 @@
 ## Happy Birthday Donald!
 
-It's President* Trump's birthday on 6/14. 
+It's President* Trump's birthday on 6/14/2020. 
 
-Let's all wish him well by tweeting a happy birthday message with 1 of 100,000 pictures of 
-President Barack Obama attached.
+Let's all wish him well by tweeting a Happy Birthday message every 5 minutes!
+
+Each tweet will have a picture of President Barack Obama attached. 
+(1 of 100,000 pictures selected at random)
 
 ## Setup
 
