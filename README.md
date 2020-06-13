@@ -34,8 +34,11 @@ ACCESS_TOKEN_SECRET=<access token secret> \
 MESSAGE='Happy Birthday!' \
 TO_HANDLE=@realdonaldtrump \
 INTERVAL=<interval between tweets in milliseconds. 300000 is 5 minutes> \
+TMP_PATH=/tmp/img.jpg \
 node hbd.js
 ```
+
+**NOTE:** `TMP_PATH` is where downloaded image files are stored temporarily.
 
 You should see output like this:
 

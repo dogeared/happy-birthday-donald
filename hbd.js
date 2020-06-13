@@ -32,7 +32,7 @@ const client = new Twitter({
 const toHandle = process.env.TO_HANDLE;
 const message = process.env.MESSAGE;
 
-const tmpFilePath = '/tmp/img.jpg';
+const tmpFilePath = process.env.TMP_PATH;
 
 const hbd = () => {
     let url = images[between(0, images.length)];
