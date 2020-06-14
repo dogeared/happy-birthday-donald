@@ -16,11 +16,6 @@ const between = (min, max) => {
         Math.random() * (max - min) + min
     )
 };
-
-const interval = Number(process.env.INTERVAL);
-
-// read images file
-const images = fs.readFileSync('obamapics.txt').toString().split("\n");
  
 const client = new Twitter({
   consumer_key: process.env.API_KEY,
@@ -29,31 +24,44 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
+// read images file
+const images = fs.readFileSync('obamapics.txt').toString().split("\n");
+
+const interval = Number(process.env.INTERVAL);
 const toHandle = process.env.TO_HANDLE;
 const message = process.env.MESSAGE;
-
 const tmpFilePath = process.env.TMP_PATH;
 
+let usedIndices = [];
+
 const hbd = () => {
-    let url = images[between(0, images.length)];
+    var idx;
+    do {
+        idx = between(0, images.length);
+    } while (usedIndices.includes(idx));
+    usedIndices.push(idx);
+    let url = images[idx];
     console.log('Downloading image...');
     download(url, tmpFilePath, () => {
         var data = require('fs').readFileSync(tmpFilePath);
         console.log('Uploading image to twitter...');
         client.post('media/upload', { media: data }, function (error, media, response) {
-    
-            if (error) throw error;
-            var status = {
-                status: message + ' ' + toHandle,
-                media_ids: media.media_id_string
-            };
-            console.log('Posting status to twitter...')
-            client.post('statuses/update', status,  function(error, tweet, response) {
+            try {
                 if (error) throw error;
-                // console.log(tweet);  // Tweet body.
-                // console.log(response);  // Raw response object.
-                console.log();
-            });
+                var status = {
+                    status: message + ' ' + toHandle,
+                    media_ids: media.media_id_string
+                };
+                console.log('Posting status to twitter...')
+                client.post('statuses/update', status,  function(error, tweet, response) {
+                    if (error) throw error;
+                    // console.log(tweet);  // Tweet body.
+                    // console.log(response);  // Raw response object.
+                    console.log();
+                });
+            } catch (e) {
+                console.log(e);
+            }
         });
     })
 };
